@@ -1,0 +1,12 @@
+{
+    "base.first-item": {
+        "name": "first item",
+        "weight": 5,
+        "value": 10
+    },
+    "base.second-item": {
+        "name": "second item",
+        "weight": 3,
+        "value": 5 
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "core.first-event": {
+        "message": "Message of the first event!",
+        "choices": [
+            {
+                "message": "Message of the first choice."
+            }
+        ]
+    }
+}
