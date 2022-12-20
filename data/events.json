@@ -3,7 +3,19 @@
         "message": "Message of the first event!",
         "choices": [
             {
-                "message": "Message of the first choice."
+                "message": "Message of the first choice.",
+                "next_event_key": "",
+                "items": {}
+            }
+        ]
+    },
+    "core.second-event": {
+        "message": "Message of the second event!",
+        "choices": [
+            {
+                "message": "Message of the first choice.",
+                "next_event_key": "",
+                "items": {}
             }
         ]
     }
