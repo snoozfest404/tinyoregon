@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../item/item.hpp"
+#include "../settler/caravan.hpp"
 
 #include <vector>
 #include <map>
@@ -20,14 +21,16 @@ namespace game {
     private:
         bool running = true;
         Difficulty difficulty;
+        settler::Caravan player_caravan;
         std::default_random_engine rand_engine;
         map<string, item::Item> item_pool;
         vector<string> settler_name_pool;
     public:
         Game(
             Difficulty difficulty,
-            const map<string, item::Item> item_pool,
-            const vector<string> settler_name_pool,
+            const settler::Caravan &player_caravan,
+            const map<string, item::Item> &item_pool,
+            const vector<string> &settler_name_pool,
             unsigned long seed
         );
         void eval_input(const string &input);

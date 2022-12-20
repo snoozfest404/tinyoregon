@@ -199,9 +199,10 @@ int main(int argc, char **argv)
         answer_invalid = true;
     }
 
-    settler::Caravan caravan_instance(settlers);
+    settler::Caravan player_caravan(settlers);
 
-    game::Game game_instance(difficulty, item_pool, settler_name_pool, seed);
+    game::Game game_instance(difficulty, player_caravan,
+        item_pool, settler_name_pool, seed);
 
     // Main game loop.
     while (game_instance.is_running()) {

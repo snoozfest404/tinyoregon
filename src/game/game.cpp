@@ -12,10 +12,11 @@ using namespace game;
 
 Game::Game(
     Difficulty difficulty,
-    const map<string, item::Item> item_pool,
-    const vector<string> settler_name_pool,
+    const settler::Caravan &player_caravan,
+    const map<string, item::Item> &item_pool,
+    const vector<string> &settler_name_pool,
     unsigned long seed
-) {
+) : player_caravan(player_caravan) {
     this->difficulty = difficulty;
     this->item_pool = item_pool;
     this->settler_name_pool = settler_name_pool;
