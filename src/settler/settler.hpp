@@ -7,7 +7,7 @@
 using std::string;
 
 namespace settler {
-    class Settler : protected entity::Entity {
+    class Settler : public entity::Entity {
     private:
         string name;
     public:
