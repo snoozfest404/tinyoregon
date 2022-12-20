@@ -8,7 +8,7 @@
 using std::vector;
 
 namespace settler {
-    class Caravan : protected entity::Entity {
+    class Caravan : public entity::Entity {
     private:
         vector<Settler> settlers;
     public:
