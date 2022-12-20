@@ -184,7 +184,6 @@ int main(int argc, char **argv)
         if (input.length() == 0) {
             std::uniform_int_distribution<int> dist(0, settler_name_pool.size()-1);
             int idx = dist(rand_engine);
-            fmt::print("IDX {}", idx);
             string name = settler_name_pool[idx];
             settlers.push_back(settler::Settler(name));
             continue;
