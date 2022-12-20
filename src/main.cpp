@@ -124,6 +124,33 @@ int main(int argc, char **argv)
         answer_invalid = true;
     }
 
+    answer_invalid = false;
+    int settler_count = 4;
+    while(true) {
+        fmt::print("{}\n", DIVIDER);
+        fmt::print("How many settler to embark with? (2-4, default: 4)\n");
+        fmt::print("\n");
+
+        if (answer_invalid) {
+            fmt::print(fg(fmt::terminal_color::yellow),
+                "Please pick a valid number of settlers.\n");
+        }
+
+        string input;
+        getline(std::cin, input);
+
+        if (input.length() == 0) {
+            break;
+        }
+
+        std::smatch res;
+        if(std::regex_match(input, res, rgx(R"(^[2-4]$)"))) {
+            settler_count = std::stoi(res.str(0));
+            break;
+        }
+        answer_invalid = true;
+    }
+
     game::Game game_instance(difficulty, item_pool, settler_name_pool, seed);
 
     // Main game loop.
