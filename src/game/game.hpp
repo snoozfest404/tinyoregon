@@ -28,7 +28,7 @@ namespace game {
             Difficulty difficulty,
             const map<string, item::Item> item_pool,
             const vector<string> settler_name_pool,
-            int seed
+            unsigned long seed
         );
         void eval_input(const string &input);
         bool is_running();

@@ -14,7 +14,7 @@ Game::Game(
     Difficulty difficulty,
     const map<string, item::Item> item_pool,
     const vector<string> settler_name_pool,
-    int seed
+    unsigned long seed
 ) {
     this->difficulty = difficulty;
     this->item_pool = item_pool;

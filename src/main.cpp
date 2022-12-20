@@ -11,6 +11,7 @@
 #include <map>
 #include <vector>
 #include <regex>
+#include <chrono>
 
 #define ITEMS_FILE          "items.json"
 #define EVENTS_FILE         "events.json"
@@ -94,7 +95,36 @@ int main(int argc, char **argv)
         break;
     }
 
-    game::Game game_instance(difficulty, item_pool, settler_name_pool, 0);
+    answer_invalid = false;
+    unsigned long seed;
+    while(true) {
+        fmt::print("{}\n", DIVIDER);
+        fmt::print("Provide a seed for randomness? (optional)\n");
+        fmt::print("\n");
+
+        if (answer_invalid) {
+            fmt::print(fg(fmt::terminal_color::yellow),
+                "Please pick a valid seed.\n");
+        }
+
+        string input;
+        getline(std::cin, input);
+
+        if (input.length() == 0) {
+            seed = std::chrono::system_clock::now()
+                .time_since_epoch().count();
+            break;
+        }
+
+        std::smatch res;
+        if(std::regex_match(input, res, rgx(R"(^\d+$)"))) {
+            seed = std::stoul(res.str(0));
+            break;
+        }
+        answer_invalid = true;
+    }
+
+    game::Game game_instance(difficulty, item_pool, settler_name_pool, seed);
 
     // Main game loop.
     while (game_instance.is_running()) {
