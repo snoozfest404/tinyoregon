@@ -11,6 +11,8 @@ add_executable(
     settler/caravan.cpp
     entity/entity.hpp
     entity/entity.cpp
+    event/event.hpp
+    event/event.cpp
 )
 
 target_link_libraries(
