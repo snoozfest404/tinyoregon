@@ -2,6 +2,7 @@
 #include "game/game.hpp"
 #include "settler/settler.hpp"
 #include "settler/caravan.hpp"
+#include "event/event.hpp"
 
 #include <string>
 #include <iostream>
@@ -45,6 +46,7 @@ int main(int argc, char **argv)
     fs::path data_dir_path(argv[1]);
 
     map<string, item::Item> item_pool;
+    map<string, event::Event> event_pool;
     vector<string> settler_name_pool;
 
     // Construct absolute paths to data files.
@@ -58,6 +60,9 @@ int main(int argc, char **argv)
     item_pool = items_j;
 
     // TODO: Read and parse events.
+    std::ifstream events_f(events_path);
+    json events_j = json::parse(events_f);
+    event_pool = events_j;
 
     // Read and parse settler names.
     std::ifstream settler_names_f(settler_names_path);
