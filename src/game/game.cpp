@@ -40,13 +40,15 @@ void Game::eval_input(const string &input) {
         this->running = false;
         return;
     } else if (std::regex_match(input, res, rgx(R"(^(help|\?)(\s+([a-z]+))?$)"))) {
+        const string general_help_msg =
+            "Available commands are:\n"
+            "  status   Show the current game status\n"
+            "  pick     Pick an option\n"
+            "  help     Show general or command specific help message\n"
+            "  exit     Exit the game\n";
+
         if (res.str(3) == "") {
-            fmt::print("Available commands are:\n");
-            fmt::print("\tstatus\tShow the current game status\n");
-            fmt::print("\tpick\tPick an option\n");
-            fmt::print("\thelp\tShow general or command specific help message\n");
-            fmt::print("\texit\tExit the game\n");
-            fmt::print("\n");
+            fmt::print(general_help_msg);
             return;
         }
 
