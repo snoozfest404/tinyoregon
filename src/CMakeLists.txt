@@ -7,6 +7,8 @@ add_executable(
     game/game.cpp
     settler/settler.hpp
     settler/settler.cpp
+    settler/caravan.hpp
+    settler/caravan.cpp
     entity/entity.hpp
     entity/entity.cpp
 )
