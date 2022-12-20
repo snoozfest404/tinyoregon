@@ -40,7 +40,12 @@ void Game::eval_input(const string &input) {
         return;
     } else if (std::regex_match(input, res, rgx(R"(^(help|\?)(\s+([a-z]+))?$)"))) {
         if (res.str(3) == "") {
-            // Print general help message.
+            fmt::print("Available commands are:\n");
+            fmt::print("\tstatus\tShow the current game status\n");
+            fmt::print("\tpick\tPick an option\n");
+            fmt::print("\thelp\tShow general or command specific help message\n");
+            fmt::print("\texit\tExit the game\n");
+            fmt::print("\n");
             return;
         }
 
