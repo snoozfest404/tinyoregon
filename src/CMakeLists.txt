@@ -5,6 +5,8 @@ add_executable(
     item/item.cpp
     game/game.hpp
     game/game.cpp
+    settler/settler.hpp
+    settler/settler.cpp
 )
 
 target_link_libraries(
