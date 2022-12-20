@@ -7,6 +7,8 @@ add_executable(
     game/game.cpp
     settler/settler.hpp
     settler/settler.cpp
+    entity/entity.hpp
+    entity/entity.cpp
 )
 
 target_link_libraries(
