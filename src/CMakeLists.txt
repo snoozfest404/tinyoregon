@@ -3,6 +3,8 @@ add_executable(
     main.cpp
     item/item.hpp
     item/item.cpp
+    game/game.hpp
+    game/game.cpp
 )
 
 target_link_libraries(
