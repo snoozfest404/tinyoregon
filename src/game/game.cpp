@@ -52,12 +52,35 @@ void Game::eval_input(const string &input) {
             return;
         }
 
-        // This command should accept any lowercase word
-        // and if not found should inform the player that
-        // the requested command does not exist.
         string topic = res.str(3);
+        if (topic == "status") {
+            fmt::print(
+                "Usage: status\n\n"
+                "Shows the condition of the wagon and the settlers, "
+                "lists the current contents of the wagon.\n"
+            );
+        } else if (topic == "pick") {
+            fmt::print(
+                "Usage: pick <option-number>\n\n"
+                "Picks the given option if available.\n"
+            );
+        } else if (topic == "help") {
+            fmt::print(
+                "Usage: help <command>\n\n"
+                "With no command, shows a general help message "
+                "and lists the available commands.\n\n"
+                "If given a command, shows specific help message for that command.\n"
+            );
+        } else if (topic == "exit") {
+            fmt::print(
+                "Usage: exit\n\n"
+                "Exits the game.\n"
+            );
+        } else {
+            fmt::print("Unknown command: {}\n", topic);
+        }
 
-        // Print help message about the selected topic.
+        return;
     } else if (std::regex_match(input, rgx(R"(^status$)"))) {
         fmt::print(fmt::emphasis::underline, "Caravan:\n");
         fmt::print("\n");
