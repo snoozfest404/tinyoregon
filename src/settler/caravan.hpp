@@ -13,6 +13,7 @@ namespace settler {
         vector<Settler> settlers;
     public:
         Caravan(const vector<Settler> &settlers, unsigned int max_health = 100);
+        Caravan(const vector<Settler> &settlers, unsigned int max_health, unsigned int health);
         const vector<Settler> & get_settlers() const { return this->settlers; };
     };
 }
