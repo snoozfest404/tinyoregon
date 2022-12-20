@@ -17,8 +17,7 @@
 #define SETTLER_NAMES_FILE  "settler_names.txt"
 
 #define PROMPT "> "
-
-#define rgx std::regex
+#define DIVIDER "---------"
 
 using std::string;
 using std::vector;
@@ -26,7 +25,7 @@ using std::map;
 using nlohmann::json;
 
 #define fs  std::filesystem
-
+#define rgx std::regex
 
 void print_help() {
     fmt::print("Usage: tinyoregon <data-dir-path>\n");
@@ -63,7 +62,39 @@ int main(int argc, char **argv)
         settler_name_pool.push_back(line);
     }
 
-    game::Game game_instance(item_pool, settler_name_pool, 0);
+    fmt::print(fg(fmt::terminal_color::green), "Welcome to the trail!\n");
+
+    bool answer_invalid = false;
+
+    game::Difficulty difficulty;
+    while (true) {
+        fmt::print("{}\n", DIVIDER);
+        fmt::print("Please select a difficulty!\n");
+        fmt::print("[1] Easy\n");
+        fmt::print("[2] Normal\n");
+        fmt::print("[3] Hard\n");
+        fmt::print("\n");
+
+        if (answer_invalid) {
+            fmt::print(fg(fmt::terminal_color::yellow),
+                "Please pick a valid option.\n");
+        }
+
+        string input;
+        getline(std::cin, input);
+
+        std::smatch res;
+        if (!std::regex_match(input, res, rgx(R"(^[1-3]$)"))) {
+            answer_invalid = true;
+            continue;
+        }
+
+        int option = std::stoi(res.str(0));
+        difficulty = static_cast<game::Difficulty>(option);
+        break;
+    }
+
+    game::Game game_instance(difficulty, item_pool, settler_name_pool, 0);
 
     // Main game loop.
     while (game_instance.is_running()) {
