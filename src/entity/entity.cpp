@@ -4,6 +4,14 @@
 
 using namespace entity;
 
+Entity::Entity(unsigned int max_health, unsigned int health) {
+    this->max_health = max_health;
+    this->health = health;
+}
+
+Entity::Entity(unsigned int max_health)
+    : Entity(max_health, max_health) {}
+
 void Entity::die() {
     this->alive = false;
     this->health = 0;

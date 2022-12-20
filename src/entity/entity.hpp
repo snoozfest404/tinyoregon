@@ -3,6 +3,8 @@
 namespace entity {
     class Entity {
     protected:
+        Entity(unsigned int max_health);
+        Entity(unsigned int max_health, unsigned int health);
         unsigned int max_health;
         unsigned int health;
         bool alive = true;
