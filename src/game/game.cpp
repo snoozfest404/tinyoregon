@@ -3,6 +3,7 @@
 #include <string>
 #include <regex>
 #include <fmt/core.h>
+#include <fmt/color.h>
 
 #define rgx std::regex
 
@@ -56,7 +57,21 @@ void Game::eval_input(const string &input) {
 
         // Print help message about the selected topic.
     } else if (std::regex_match(input, rgx(R"(^status$)"))) {
-        // Print game status.
+        fmt::print(fmt::emphasis::underline, "Caravan:\n");
+        fmt::print("\n");
+
+        fmt::print("Health: {} / {}\n", player_caravan.get_health(),
+            player_caravan.get_max_health());
+        fmt::print("\n");
+
+        fmt::print(fmt::emphasis::underline, "Settlers:\n");
+        fmt::print("\n");
+
+        for (const auto &s : player_caravan.get_settlers()) {
+            fmt::print("Name:\t{}\n", s.get_name());
+            fmt::print("Health:\t{} / {}\n", s.get_health(), s.get_max_health());
+            fmt::print("\n");
+        }
     } else if (std::regex_match(input, res, rgx(R"(^pick(\s+(\d+))?$)"))) {
         if (res.str(2) == "") {
             fmt::print("Usage: pick <option-number>\n");
